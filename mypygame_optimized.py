@@ -274,6 +274,13 @@ def main():
                         save_data["items"] = items
                         save_game(save_data)
                         state = "menu"
+                elif state == "menu":
+                    if event.key == pygame.K_ESCAPE:
+                        save_data["high_score"] = max(high_score, score, save_data.get("high_score", 0))
+                        save_data["coins"] = coins
+                        save_data["items"] = items
+                        save_game(save_data)
+                        running = False
                 else:
                     # global ESC to quit from menu/tutorial
                     if event.key == pygame.K_ESCAPE:
